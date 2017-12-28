@@ -5,145 +5,84 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <!-- <script type="text/javascript" src="skinquiz.js"></script>  -->
-
+    <script type="text/javascript" src="skinquiz.js"></script>
+    <link rel="stylesheet" href="skincare.css">
     <title>Find the perfect product</title>
   </head>
+    <body>
 
-  <body>
+      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Hello Gorgeous! Start the Quiz</button>
 
-    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Hello Gorgeous! Start the Quiz</button>
-
-    <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    <div class="modal-content">
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
 
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
               <h4 class="modal-title">Skin Care Quiz</h4>
             </div>
             <div class="modal-body">
-<form>
-<h2>Your skin tends to be:</h2>
-  <input type="radio" name="question1" value="Dry"> Dry<br>
-  <input type="radio" name="question1" value="Combination"> Combination<br>
-  <input type="radio" name="question1" value="Oily"> Oily<br>
-</form>
-
-                <script type="text/javascript">
-function buildQuiz(){
-        const output[];
-        myQuestions.forEach((currentQuestion, questionNumber) => {
-        const answers = [];
-              )
-        const myQuestions = [
-               {
-                  question: “Your skin tends to be:”,
-                   answers: {
-                     a: “Oily”,
-                     b: “Dry”,
-                     c: “Combination”
-                 },
-                 {
-                 question: “Do you have a skin condition or is your skin sensitive or easily irritated?”,
-                   answers: {
-                     a: “Yes”,
-                     b: “No”
-                    }
-                 ];
-
-                 var myResults = [
-                   {
-                     ProductType: 'Hydrating',
-                     productLink: <a href="#" class="next">Begin &raquo;</a> </h2>
-                     //
-                 },
-                     skinType: 'Sensitive'
-                 ]
-                 output.push(
-                   `<div class="slide">
-                     <div class="question"> ${currentQuestion.question} </div>
-                     <div class="answers"> ${answers.join("")} </div>
-                   </div>`
-                 );
-                <div class="quizContainer">
-                  (function(){
-};
-                const quizContainer = document.getElementById('quiz');
-                const resultsContainer = document.getElementById('results');
-                const submitButton = document.getElementById('submit');
-
-                  function buildQuiz(){
-                    const output[];
-                    myQuestions.forEach((currentQuestion, questionNumber) => {
-                    const answers = [];
-                )
-                for (letter in currentQuestion.answers) {
-                        answers.push(
-                          `<label>
-                            <input type="radio" name="question${questionNumber}" value="${letter}">
-                            ${letter} :
-                            ${currentQuestion.answers[letter]}
-                          </label>`
-                        );
-                      }
-                  };
-
-                  function showResults(){};
-
-                  buildQuiz();
-                  function showSlide(n) {
-                    slides[currentSlide].classList.remove("active-slide");
-                    slides[n].classList.add("active-slide");
-                    currentSlide = n;
-
-                    if (currentSlide === 0) {Rerun
-                      previousButton.style.display = "none";
-                    } else {
-                      previousButton.style.display = "inline-block";
-                    }
-
-                    if (currentSlide === slides.length - 1) {
-                      nextButton.style.display = "none";
-                      submitButton.style.display = "inline-block";
-                    } else {
-                      nextButton.style.display = "inline-block";
-                      submitButton.style.display = "none";
-                    }
-                  }
-
-                  function showNextSlide() {
-                    showSlide(currentSlide + 1);
-                  }
-
-                  function showPreviousSlide() {
-                    showSlide(currentSlide - 1);
-
-                  }
-                //                $('.hide-button').on('click', () => {
-                //                $('.first-image').hide();
-
-                submitButton.addEventListener('click', showResults);
-
-                };
+<!--
+    quizContainer.innerHTML = output.join("");
+                }
+                output.push(
+                <div class="slide">
+                  <div class="question"> ${currentQuestion.question} </div>
+                  <div class="answers"> ${answers.join("")} </div>
                 </div>
-                </script>
+              ); -->
+          <div class="quiz-container">
+                <div id="quiz"></div>
+                </div>
+
+              <form>
+              <h2>Your skin tends to be:</h2>
+                <input type="radio" name="question1" value="Dry"> Dry<br>
+                <input type="radio" name="question1" value="Combination"> Combination<br>
+                <input type="radio" name="question1" value="Oily"> Oily<br>
+                <button id="previous">Previous Question</button>
+                <button id="next">Next Question</button>
+                <button id="submit">Submit Quiz</button>
+              </form>
+              <form>
+              <h2>Is your skin sensitive?</h2>
+                <input type="radio" name="question2" value="YesC"> Yes, I have a skin condition like excema.<br>
+                <input type="radio" name="question2" value="YesN"> Yes, my skin tends to be sensitive.<br>
+                <input type="radio" name="question2" value="No"> No, my skin isn't sensitive.<br>
+                <button id="previous">Previous Question</button>
+                <button id="next">Next Question</button>
+                <button id="submit">Submit Quiz</button>
+              </form>
+              <form>
+              <h2> What environment is your skin usually exposed too?</h2>
+                <input type="radio" name="question2" value="Humid"> Humid. IMG <br>
+                <input type="radio" name="question2" value="Dry"> Dry IMG <br>
+                <input type="radio" name="question2" value="Neither">Neither IMG <br>
+              </form>
+              <h2> What environment is your skin usually exposed too?</h2>
+                <input type="radio" name="question2" value="Humid"> Humid. IMG <br>
+                <input type="radio" name="question2" value="Dry"> Dry IMG <br>
+                <input type="radio" name="question2" value="Neither">Neither IMG <br>
+              </form>
+              <h2> What environment is your skin usually exposed too?</h2>
+                <input type="radio" name="question2" value="Humid"> Humid. IMG <br>
+                <input type="radio" name="question2" value="Dry"> Dry IMG <br>
+                <input type="radio" name="question2" value="Neither">Neither IMG <br>
+              </form>
 
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
 
     <div id="results"></div>
+    </div>
 
-    </div>
-    <div class="quiz-container">
-      <div id="quiz"></div>
-    </div>
 
     <button id="previous">Previous Question</button>
     <button id="next">Next Question</button>
     <button id="submit">Submit Quiz</button>
     <div id="results"></div>
   </body>
+
 
 </html>
