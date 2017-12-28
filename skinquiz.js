@@ -11,9 +11,12 @@
             answers: {
               a: “Yes”,
               b: “No”
-            }
+            },
+            question: " W? "
+            a: "?",
+            b: "??"
+            console.log('myQuestions called')
           ];
-
 
           function buildQuiz() {
             const output[];
@@ -37,6 +40,7 @@
       </div>`
               );
             });
+
             quizContainer.innerHTML = output.join("");
           }
 
@@ -51,40 +55,12 @@
             const userAnswer = (answerContainer.querySelector(selector) || {})
               .value;
           })
-          var myResults = [{
-                ProductType: 'Hydrating',
-                productLink: < a href = "#"
-                class = "next" > Begin & raquo; < /a> </h
-                2 >
-                //
-              },
-              skinType: 'Sensitive'
-            ] < div class = "quizContainer" >
-            (function() {};
-              const quizContainer = document.getElementById('quiz');
-              const resultsContainer = document.getElementById('results');
-              const submitButton = document.getElementById('submit');
-              const slides = document.querySelectorAll(".slide");
-              let currentSlide = 0;
 
-              showSlide(0);
+          if (userAnswer === currentQuestion.possibleAnswer) {
+            numCorrect++;
 
-              function buildQuiz() {
-                const output[];
-                output.push(
-                  `<div class="slide">
-                           <div class="question"> ${currentQuestion.question} </div>
-                           <div class="answers"> ${answers.join("")} </div>
-                         </div>`
-                  quizContainer.innerHTML = output.join("");
-                }
-
-              )
-            };
-
-
-          buildQuiz();
-
+          }
+          //when user selects answer point total is added to running score
           function showSlide(n) {
             slides[currentSlide].classList.remove("active-slide");
             slides[n].classList.add("active-slide");
@@ -108,18 +84,23 @@
 
           function showNextSlide() {
             showSlide(currentSlide + 1);
-          }
 
-          function showPreviousSlide() {
-            showSlide(currentSlide - 1);
+            function showPreviousSlide() {
+              showSlide(currentSlide - 1);
+            }
+            const quizContainer = document.getElementById('quiz');
+            const resultsContainer = document.getElementById('results');
+            const submitButton = document.getElementById('submit');
 
-          }
-          previousButton.addEventListener("click", showPreviousSlide);nextButton
-          .addEventListener("click", showNextSlide);$('submitButton').on(
-            'click', () => {
-              $('myQuestions.length').hide();
+            buildQuiz();
+            const previousButton = document.getElementById("previous");
+            const nextButton = document.getElementById("next");
+            const slides = document.querySelectorAll(".slide");
+            let currentSlide = 0;
 
-              submitButton.addEventListener('click', showResults);
+            showSlide(0);
 
-            }; < /div> < /script >
-          }
+            submitButton.addEventListener("click", showResults);
+            previousButton.addEventListener("click", showPreviousSlide);
+            nextButton.addEventListener("click", showNextSlide);
+          })();
