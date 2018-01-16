@@ -1,4 +1,5 @@
 .slide{
+  padding-left: 30px;
   position: absolute;
   left: 0px;
   top: 0px;
@@ -9,14 +10,16 @@
 }
 
 .active-slide{
+  padding-left: 50px;
   opacity: 1;
   z-index: 2;
 }
 
 }
 .quiz-container{
+  padding-left: 50px;
   position: relative;
-  height: 50px;
+  height: 250px;
   margin-top: 40px;
 }
 
@@ -30,6 +33,11 @@ modal-header {
   color: white;
 }
 
+modal-body {
+  background-color: white;
+  height: 500px;
+
+}
 h2 {
   font-size: 24x;
   font-style: normal;
