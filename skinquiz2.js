@@ -1,6 +1,15 @@
 /* jslint browser:true */
+
 window.onload = function () {
-    'use strict';
+
+  'use strict';
+  const quizContainer = document.getElementById('quiz');
+  const resultsContainer = document.getElementById('results');
+  const submitButton = document.getElementById('submit');
+  const previousButton = document.getElementById('previous');
+  const nextButton = document.getElementById('next');
+
+  let currentSlide = 0;
 
     const myQuestions = [{
     question: 'Your skin tends to be:',
@@ -49,16 +58,6 @@ window.onload = function () {
   }
   ]
 
-  const quizContainer = document.getElementById('quiz');
-  const resultsContainer = document.getElementById('results');
-  const submitButton = document.getElementById('submit');
-  //  test
-  const previousButton = document.getElementById('previous');
-  const nextButton = document.getElementById('next');
-  const slides = document.querySelectorAll('.slide');
-
-  let currentSlide = 0;
-
   function showSlide (n) {
     slides[currentSlide].classList.remove('active-slide');
     slides[n].classList.add('active-slide');
@@ -79,9 +78,6 @@ window.onload = function () {
     }
   }
 
-  buildQuiz();
-  showSlide(0);
-
   function showNextSlide () {
     showSlide(currentSlide + 1)
   }
@@ -90,39 +86,31 @@ window.onload = function () {
     showSlide(currentSlide - 1)
   }
 
-  previousButton.addEventListener('click', showPreviousSlide);
-  nextButton.addEventListener('click', showNextSlide);
-  //  test
-
   function buildQuiz () {
     const output = [];
 
     myQuestions.forEach(
       (currentQuestion, questionNumber) => {
         const answers = [];
-        for (letter in currentQuestion.answers) {
+        for (var letter in currentQuestion.answers) {
 
           answers.push(
             `<label>
-            <input type="radio" name="question${questionNumber}"
-  value="${letter}">
-            ${letter} :
-            ${currentQuestion.answers[letter]}
-          </label>`
+        <input type="radio" name="question${questionNumber}" value="${letter}">
+        ${letter} :
+        ${currentQuestion.answers[letter]}
+      </label>`
           );
         }
-   });
 
         output.push(
           `<div class="slide">
-    <div class="question"> ${currentQuestion.question} </div>
-    <div class="answers"> ${answers.join("")} </div>
-  </div>`
+        <div class="question"> ${currentQuestion.question} </div>
+        <div class="answers"> ${answers.join("")} </div>
+      </div>`
         );
-
       }
     );
-
     return quizContainer.innerHTML = output.join('');
   }
 
@@ -148,7 +136,17 @@ window.onload = function () {
     resultsContainer.innerHTML = numCorrect + ' out of ' + myQuestions.length;
   }
 
+  buildQuiz();
 
-  submitButton.addEventListener('click', showResults);
+  const slides = document.querySelectorAll('.slide');
 
-};
+  showSlide(0);
+
+  submitButton.addEventListener('onclick', showResults);
+  var x = document.getElementById("myNxt");
+  nextButton.addEventListener('onclick', showNextSlide);
+  x.getElementById("myNxt").addEventListener("click", showNextSlide);
+  //$(nextButton).on('click', function () {'onclick', showNextSlide});
+  //previousButton.addEventListener('onclick', showPreviousSlide);
+
+  };
