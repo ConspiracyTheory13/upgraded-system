@@ -64,7 +64,8 @@ window.onload = function () {
     currentSlide = n;
 
     if (currentSlide === 0) {
-      previousButton.style.display = 'none';
+      previousButton.style.visibility = 'hidden';
+      submitButton.style.visibility = 'hidden';
     }
     else {
       previousButton.style.display = 'inline-block';
@@ -88,30 +89,30 @@ window.onload = function () {
 
   function buildQuiz () {
     const output = [];
+    // ${currentQuestion.answers[letter]}
 
     myQuestions.forEach(
       (currentQuestion, questionNumber) => {
         const answers = [];
         for (var letter in currentQuestion.answers) {
-
           answers.push(
-            `<label>
-        <input type="radio" name="question${questionNumber}" value="${letter}">
-        ${letter} :
-        ${currentQuestion.answers[letter]}
-      </label>`
-          );
-        }
+                   `<label>
+                      <input type="radio" name="question${questionNumber}" value="${letter}">
+                       ${letter} :
+                    </label>`
+                 );
+               }
 
-        output.push(
-          `<div class="slide">
-        <div class="question"> ${currentQuestion.question} </div>
-        <div class="answers"> ${answers.join("")} </div>
-      </div>`
-        );
-      }
-    );
-    return quizContainer.innerHTML = output.join('');
+               output.push(
+               // add this question and its answers to the output
+                 `<div class="slide">
+                    <div class="question"> ${currentQuestion.question} </div>
+                    <div class="answers"> ${answers.join("")} </div>
+                  </div>`
+               );
+             });
+
+    quizContainer.innerHTML = output.join('');
   }
 
   function showResults() {
@@ -142,11 +143,9 @@ window.onload = function () {
 
   showSlide(0);
 
-  submitButton.addEventListener('onclick', showResults);
-  var x = document.getElementById("myNxt");
-  nextButton.addEventListener('onclick', showNextSlide);
-  x.getElementById("myNxt").addEventListener("click", showNextSlide);
-  //$(nextButton).on('click', function () {'onclick', showNextSlide});
-  //previousButton.addEventListener('onclick', showPreviousSlide);
+  submitButton.addEventListener('click', showResults);
+  nextButton.addEventListener('click', showNextSlide);
+  previousButton.addEventListener('click', showPreviousSlide);
+  
 
-  };
+};

@@ -9,6 +9,11 @@
   transition: opacity 0.5s;
 }
 
+.button
+{
+
+  
+}
 .active-slide{
   padding-left: 50px;
   opacity: 1;
