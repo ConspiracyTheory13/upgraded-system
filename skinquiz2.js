@@ -18,7 +18,9 @@ window.onload = function () {
       b: 'Dry',
       c: 'Combination'
     },
-    correctAnswer: 'c'
+    aAnswer: 'a',
+    bAnswer: 'b',
+    cAnswer: 'c'
   },
   {
     question: 'Does your skin tend to be sensitive or irritated?',
@@ -27,7 +29,9 @@ window.onload = function () {
       b: 'Yes, my skin tends to be sensitive',
       c: 'No, my skin isn\'t sensitive'
     },
-    correctAnswer: 'c'
+    aAnswer: 'a',
+    bAnswer: 'b',
+    cAnswer: 'c'
   },
   {
     question: 'What type of climate is your skin commonly exposed too?',
@@ -36,27 +40,40 @@ window.onload = function () {
       b: 'Humid',
       c: 'Neither'
     },
-    correctAnswer: 'c'
+    aAnswer: 'a',
+    bAnswer: 'b',
+    cAnswer: 'c'
   },
   {
-    question: 'Where is Waldo really?',
+    question: 'What skin tone do you have?',
     answers: {
-      a: 'A',
-      b: 'B',
-      c: 'c'
+      a: 'Light skinned',
+      b: 'Medium skinned',
+      c: 'Dark skinned'
     },
-    correctAnswer: 'c'
+    aAnswer: 'a',
+    bAnswer: 'b',
+    cAnswer: 'c'
   },
   {
-    question: 'Where is Waldo really?',
+    question: 'Does your skin show signs of ageing?',
     answers: {
-      a: 'A',
-      b: 'B',
-      c: 'c'
+      a: 'No',
+      b: 'Some fine lines around eyes and mouth',
+      c: 'Mostly sagging and drooping'
     },
-    correctAnswer: 'c'
+    aAnswer: 'a',
+    bAnswer: 'b',
+    cAnswer: 'c'
   }
   ]
+
+var resultA = 'lalala';
+var resultB = 'gggggg';
+var resultC = 'fdffddfd';
+var userAnswer = {};
+var currentQuestion = {};
+var skinScore = 0;
 
   function showSlide (n) {
     slides[currentSlide].classList.remove('active-slide');
@@ -65,7 +82,6 @@ window.onload = function () {
 
     if (currentSlide === 0) {
       previousButton.style.visibility = 'hidden';
-      submitButton.style.visibility = 'hidden';
     }
     else {
       previousButton.style.display = 'inline-block';
@@ -97,7 +113,7 @@ window.onload = function () {
         for (var letter in currentQuestion.answers) {
           answers.push(
                    `<label>
-                      <input type="radio" name="question${questionNumber}" value="${letter}">
+                      <input type="radio" name="question${questionNumber}" value="${letter}" checked>
                        ${letter} :
                     </label>`
                  );
@@ -116,26 +132,27 @@ window.onload = function () {
   }
 
   function showResults() {
-    console.log('in showResults');
+    console.log("Running?")
     const answerContainers = quizContainer.querySelectorAll('.answers');
-    let numCorrect = 0;
+    let skinScore = 0;
+      if (userAnswer === currentQuestion.aAnswer) {
+        skinScore++;
+
+      } else if (userAnswer === currentQuestion.bAnswer) {
+        skinScore+2;
+      } else {
+  skinScore+3;
+
+    }
     myQuestions.forEach((currentQuestion, questionNumber) => {
 
       const answerContainer = answerContainers[questionNumber];
       const selector = 'input[name=question' + questionNumber + ']:checked';
       const userAnswer = (answerContainer.querySelector(selector) || {}).value;
 
-      if (userAnswer === currentQuestion.correctAnswer) {
-        numCorrect++;
-
-        answerContainers[questionNumber].style.color = 'lightgreen';
-      } else {
-        answerContainers[questionNumber].style.color = 'red';
-      }
     });
 
-    resultsContainer.innerHTML = numCorrect + ' out of ' + myQuestions.length;
-  }
+    }
 
   buildQuiz();
 
@@ -146,6 +163,36 @@ window.onload = function () {
   submitButton.addEventListener('click', showResults);
   nextButton.addEventListener('click', showNextSlide);
   previousButton.addEventListener('click', showPreviousSlide);
-  
 
+  const resultOptions = [
+
+  {	title: 'resultA',
+  	desc: 'You got' + resultA
+  },
+
+  {	title: 'resultB',
+  	desc: 'You got' + resultB
+  },
+
+  {	title: 'resultC',
+  	desc: 'You got' + resultC
+  }
+  ];
+
+  if (userAnswer === currentQuestion.aAnswer) {
+     skinScore++;
+
+   } else if (userAnswer === currentQuestion.bAnswer) {
+     skinScore+2;
+   } else {
+     skinScore+3;
+  }
+
+  if (5 <= skinScore && skinScore <= 10) {
+        resultOptions[0].desc;
+      } else if (11 <= skinScore && skinScore <= 16) {
+        resultOptions[1].desc;
+      } else {
+        resultOptions[2].desc;
+      }
 };
